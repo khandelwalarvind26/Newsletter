@@ -31,7 +31,7 @@ app.post("/", function(req,res){
             }
         ]
     };
-    const url = "https://us9.api.mailchimp.com/3.0/lists/8f5e81563c";
+    const url = "https://us9.api.mailchimp.com/3.0/lists/8f5e81563c ";
     const jsonData = JSON.stringify(data);
     const options = {
         method : "POST",
@@ -45,17 +45,23 @@ app.post("/", function(req,res){
         else {
             res.sendFile(__dirname + "/failure.html");
         }
-        response.on("data",function(data) {
-            // if(data.error_count == 0) console.log("Success");
-            // else console.log("Failure");
-            console.log(JSON.parse(data));
-        });
+        // response.on("data",function(data) {
+        //     // if(data.error_count == 0) console.log("Success");
+        //     // else console.log("Failure");
+        //     console.log(JSON.parse(data));
+        // });
     });
 
     request.write(jsonData);
     request.end();
 
 });
+
+app.post("/failure", function(req,res) {
+    console.log("Failure recieved");
+    res.redirect("/");
+});
+
 
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server started on port 3000");
