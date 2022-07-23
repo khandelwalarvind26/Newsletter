@@ -52,3 +52,11 @@ body {
 .btn {
   width:100%;
 }
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
